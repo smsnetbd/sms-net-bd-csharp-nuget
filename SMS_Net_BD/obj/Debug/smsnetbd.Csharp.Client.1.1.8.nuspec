@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>smsnetbd.Csharp.Client</id>
+    <version>1.1.8</version>
+    <title>sms.net.bd: SMS Sender API Service</title>
+    <authors>SmsNetBd_Developer_Team</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>smsnetbd_icon.png</icon>
+    <readme>README.md</readme>
+    <description>The official SMS Tool for SMS API by sms.net.bd</description>
+    <releaseNotes>* Fixe somne minor issue.
+* The method now in async.</releaseNotes>
+    <copyright>SMS Net BD is a fast, high capacity bulk SMS gateway in Bangladesh. It provides powerful and easy to use SMS API for developers. Easy integration with Software Applications &amp; Websites. You can also send SMS messages directly through SMS Web Panel (Dashboard). Fast and easy to use SMS Gateway for School, Small Business SMS marketing, ISP &amp; NGO in Bangladesh.</copyright>
+    <tags>sms, smsbd, sms.net, sms.bd, tool, sms.tool</tags>
+    <repository type="git" url="https://github.com/smsnetbd/sms-net-bd-csharp-nuget" commit="183a26c8228b2347198310d07f32baac1abf1914" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\sujad_lcr8vnt\Source\Repos\sms-net-bd-csharp-nuget\SMS_Net_BD\bin\Debug\net6.0\SMS_Net_BD.dll" target="lib\net6.0\SMS_Net_BD.dll" />
+    <file src="C:\Users\sujad_lcr8vnt\Source\Repos\sms-net-bd-csharp-nuget\SMS_Net_BD\smsnetbd_icon.png" target="\smsnetbd_icon.png" />
+    <file src="C:\Users\sujad_lcr8vnt\Source\Repos\sms-net-bd-csharp-nuget\README.md" target="\README.md" />
+  </files>
+</package>
