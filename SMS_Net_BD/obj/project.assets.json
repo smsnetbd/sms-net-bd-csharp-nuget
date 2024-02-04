@@ -58,7 +58,7 @@
     "C:\\Users\\sujad_lcr8vnt\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.1.8",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\sujad_lcr8vnt\\Source\\Repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj",
       "projectName": "smsnetbd.Csharp.Client",

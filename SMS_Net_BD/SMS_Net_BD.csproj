@@ -7,7 +7,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>smsnetbd.Csharp.Client</PackageId>
     <Title>sms.net.bd: SMS Sender API Service</Title>
-    <Version>1.1.8</Version>
+    <Version>1.1.1</Version>
     <Authors>SmsNetBd_Developer_Team</Authors>
     <Company>SMS_NET_BD</Company>
     <Description>The official SMS Tool for SMS API by sms.net.bd</Description>

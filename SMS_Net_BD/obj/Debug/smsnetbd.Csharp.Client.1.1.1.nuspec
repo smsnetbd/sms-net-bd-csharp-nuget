@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>smsnetbd.Csharp.Client</id>
-    <version>1.1.8</version>
+    <version>1.1.1</version>
     <title>sms.net.bd: SMS Sender API Service</title>
     <authors>SmsNetBd_Developer_Team</authors>
     <license type="expression">MIT</license>
