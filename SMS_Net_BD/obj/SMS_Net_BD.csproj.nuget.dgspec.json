@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sujad_lcr8vnt\\source\\repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj": {}
+    "C:\\Users\\sujad_lcr8vnt\\Source\\Repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sujad_lcr8vnt\\source\\repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj": {
+    "C:\\Users\\sujad_lcr8vnt\\Source\\Repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj": {
       "version": "1.1.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sujad_lcr8vnt\\source\\repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj",
+        "projectUniqueName": "C:\\Users\\sujad_lcr8vnt\\Source\\Repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj",
         "projectName": "smsnetbd.Csharp.Client",
-        "projectPath": "C:\\Users\\sujad_lcr8vnt\\source\\repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj",
+        "projectPath": "C:\\Users\\sujad_lcr8vnt\\Source\\Repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj",
         "packagesPath": "C:\\Users\\sujad_lcr8vnt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sujad_lcr8vnt\\source\\repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\obj\\",
+        "outputPath": "C:\\Users\\sujad_lcr8vnt\\Source\\Repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sujad_lcr8vnt\\AppData\\Roaming\\NuGet\\NuGet.Config",

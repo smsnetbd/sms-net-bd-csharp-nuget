@@ -85,10 +85,10 @@ namespace SMS_Net_BD
         /// </summary>
         /// <param name="to_Phone_Number"></param>
         /// <param name="text_Massage"></param>
-        /// <param name="schedule"></param>
+        /// <param name="scheduleTime"></param>
         /// <returns></returns>
         /// <exception cref="SmsException"></exception>
-        public async Task<string> ScheduleSMS(string to_Phone_Number, string text_Massage, string schedule)
+        public async Task<string> ScheduleSMS(string to_Phone_Number, string text_Massage, string scheduleTime)
         {
             try
             {
@@ -99,14 +99,12 @@ namespace SMS_Net_BD
                 client.BaseAddress = new Uri(API_Url);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var dateFormat = schedule;
-
                 var requestData = new
                 {
                     api_key = _apiKey,
                     msg = text_Massage,
                     to = to_Phone_Number,
-                    schedule = dateFormat
+                    schedule = scheduleTime
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
