@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zJIfIFNV2hwCph5A1hBz66Pwr0wEHKUZ1BNCa1rxC1WisPVZuDBHq16MT8E/BxCUHyGo44R4o+YGCWWVop8jXA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sujad_lcr8vnt\\source\\repos\\sms-net-bd-csharp-nuget\\SMS_Net_BD\\SMS_Net_BD.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sujad_lcr8vnt\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

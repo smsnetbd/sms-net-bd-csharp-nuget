@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>smsnetbd.Csharp.Client</PackageId>
+    <Title>sms.net.bd: SMS Sender API Service</Title>
+    <Version>1.1.1</Version>
+    <Authors>SmsNetBd.Developer_Team</Authors>
+    <Company>smsnetbd</Company>
+    <Description>SMS Tool using SMS API by sms.net.bd</Description>
+    <RepositoryUrl>https://github.com/smsnetbd/sms-net-bd-csharp-nuget</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>sms, smsbd, sms.net, sms.bd, tool, sms.tool</PackageTags>
+    <Copyright>Copyright ©2024 sms.net.bd All rights reserved.</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo_icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="logo_icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
