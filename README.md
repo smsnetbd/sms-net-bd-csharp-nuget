@@ -1,1 +1,0 @@
-# sms-net-bd-csharp-nuget
