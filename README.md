@@ -1,4 +1,4 @@
-# SMS.NET.BD SMS Integration with PHP Example
+# SMS.NET.BD SMS NuGet Package Integration with Visual Studio
 
 This PHP example demonstrates how to send SMS messages using the sms.net.bd SMS API in a PHP application. The provided `sms_net_bd` class simplifies the process of interacting with the sms.net.bd SMS API.
 
