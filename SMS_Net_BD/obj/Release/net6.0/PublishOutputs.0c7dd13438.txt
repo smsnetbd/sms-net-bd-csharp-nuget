@@ -1,4 +1,0 @@
-C:\Local Packages\SMS_Net_BD.dll
-C:\Local Packages\SMS_Net_BD.deps.json
-C:\Local Packages\SMS_Net_BD.pdb
-C:\Local Packages\Newtonsoft.Json.dll
