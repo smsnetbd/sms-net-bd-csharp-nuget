@@ -12,7 +12,7 @@
     <description>SMS Tool using SMS API by sms.net.bd</description>
     <copyright>Copyright ©2024 sms.net.bd All rights reserved.</copyright>
     <tags>sms, smsbd, sms.net, sms.bd, tool, sms.tool</tags>
-    <repository type="git" url="https://github.com/smsnetbd/sms-net-bd-csharp-nuget" />
+    <repository type="git" url="https://github.com/smsnetbd/sms-net-bd-csharp-nuget" commit="b886519362e077a9d2293810b7c816a50d9cc852" />
     <dependencies>
       <group targetFramework="net6.0">
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
@@ -20,8 +20,8 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\sujad_lcr8vnt\source\repos\SMS_Net_BD\SMS_Net_BD\bin\Release\net6.0\SMS_Net_BD.dll" target="lib\net6.0\SMS_Net_BD.dll" />
-    <file src="C:\Users\sujad_lcr8vnt\source\repos\SMS_Net_BD\SMS_Net_BD\logo_icon.png" target="\logo_icon.png" />
-    <file src="C:\Users\sujad_lcr8vnt\source\repos\SMS_Net_BD\README.md" target="\README.md" />
+    <file src="C:\Users\sujad_lcr8vnt\Source\Repos\sms-net-bd-csharp-nuget\SMS_Net_BD\bin\Release\net6.0\SMS_Net_BD.dll" target="lib\net6.0\SMS_Net_BD.dll" />
+    <file src="C:\Users\sujad_lcr8vnt\Source\Repos\sms-net-bd-csharp-nuget\SMS_Net_BD\logo_icon.png" target="\logo_icon.png" />
+    <file src="C:\Users\sujad_lcr8vnt\Source\Repos\sms-net-bd-csharp-nuget\README.md" target="\README.md" />
   </files>
 </package>
