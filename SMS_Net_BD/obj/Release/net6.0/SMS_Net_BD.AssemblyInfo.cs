@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright ©2024 sms.net.bd All rights reserved.")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("SMS Tool using SMS API by sms.net.bd")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1+b886519362e077a9d2293810b7c816a50d9cc852")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SMS_Net_BD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SMS_Net_BD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.1.0")]
