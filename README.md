@@ -50,7 +50,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 
    ```csharp
    // Get SMS delivery report
-   int messageId = 12345; // Specify the ID of the SMS message
+   string messageId = 12345; // Specify the ID of the SMS message
    string report = await smsClient.GetReport(messageId);
    ```
 
