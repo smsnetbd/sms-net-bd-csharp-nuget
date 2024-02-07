@@ -7,7 +7,7 @@
 ![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
 
 ### Summary:
-The sms.net.bd NuGet package provides a simple interface to send SMS messages using the sms.net.bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
+The sms.net.bd NuGet package provides a simple interface to send SMS messages using the sms.net.bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balances.
 
 ### Initialization:
 To start using the sms.net.bd NuGet package, follow these steps:
@@ -15,7 +15,7 @@ To start using the sms.net.bd NuGet package, follow these steps:
 1. **Install the Package**: Install the sms.net.bd NuGet package in your project using the following command in the NuGet Package Manager Console:
 
    ```shell
-   dotnet add package smsnetbd.Csharp.Client --version 1.1.1
+   dotnet add package smsnetbd.Csharp.Client
    ```
 
 2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [sms.net.bd API website](https://www.sms.net.bd/api).
