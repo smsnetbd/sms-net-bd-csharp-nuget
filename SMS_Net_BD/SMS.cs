@@ -11,7 +11,7 @@ namespace SMS_Net_BD
     public class SMS
     {
         //Private string variable
-        private string _apiKey = string.Empty;
+        private SmsService _smsService;
 
         /// <summary>
         /// Default Constructor with a Param
@@ -19,10 +19,13 @@ namespace SMS_Net_BD
         /// <param name="apiKey"></param>
         public SMS(string apiKey)
         {
-            _apiKey = apiKey;
+            _smsService = new SmsService(apiKey);
         }
 
-        HttpClient client = new HttpClient();
+        //HttpClient client = new HttpClient();
+
+        //private SmsService smsService = new SmsService(apiKey);
+
 
         /// <summary>
         /// Send SMS with Sender Id using sms.net.bd API
@@ -34,50 +37,9 @@ namespace SMS_Net_BD
         /// <exception cref="SmsException"></exception>
         public async Task<string> SendSMS(string to_Phone_Number, string text_Massage, string sender_Id = "")
         {
-            try
-            {
-                //using var client = new HttpClient();
+            var response = await _smsService.PostRequest(to_Phone_Number, text_Massage, sender_Id);
 
-                string API_Url = "https://api.sms.net.bd/sendsms";
-
-                client.BaseAddress = new Uri(API_Url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var requestData = new
-                {
-                    api_key = _apiKey,
-                    msg = text_Massage,
-                    to = to_Phone_Number,
-                    sender = sender_Id
-                };
-
-                var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(API_Url, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    dynamic result = JsonConvert.DeserializeObject(responseContent);
-
-                    if (result.error == "0")
-                    {
-                        return responseContent;
-                    }
-                    else
-                    {
-                        return $"Error: {result.error}, {result.msg}";
-                    }
-                }
-                else
-                {
-                    throw new SmsException($"Error: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new SmsException($"An error occurred: {ex.Message}", ex);
-            }
+            return await _smsService.Response(response);
         }
 
         /// <summary>
@@ -90,50 +52,9 @@ namespace SMS_Net_BD
         /// <exception cref="SmsException"></exception>
         public async Task<string> ScheduleSMS(string to_Phone_Number, string text_Massage, string scheduleTime)
         {
-            try
-            {
-                //using var client = new HttpClient();
+            var response = await _smsService.PostRequest(to_Phone_Number, text_Massage, "", scheduleTime);
 
-                string API_Url = "https://api.sms.net.bd/sendsms";
-
-                client.BaseAddress = new Uri(API_Url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var requestData = new
-                {
-                    api_key = _apiKey,
-                    msg = text_Massage,
-                    to = to_Phone_Number,
-                    schedule = scheduleTime
-                };
-
-                var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(API_Url, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    dynamic result = JsonConvert.DeserializeObject(responseContent);
-
-                    if (result.error == "0")
-                    {
-                        return responseContent;
-                    }
-                    else
-                    {
-                        return $"Error: {result.error}, {result.msg}";
-                    }
-                }
-                else
-                {
-                    throw new SmsException($"Error: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new SmsException($"An error occurred: {ex.Message}", ex);
-            }
+            return await _smsService.Response(response);
         }
 
 
@@ -145,40 +66,9 @@ namespace SMS_Net_BD
         /// <exception cref="SmsException"></exception>
         public async Task<string> GetReport(int id)
         {
-            try
-            {
-                using var client = new HttpClient();
+            var response = await _smsService.GetRequest(id);
 
-                string API_Url = $"https://api.sms.net.bd/report/request/{id}/";
-
-                client.BaseAddress = new Uri(API_Url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync($"?api_key={_apiKey}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    dynamic result = JsonConvert.DeserializeObject(responseContent);
-
-                    if (result.error == "0")
-                    {
-                        return responseContent;
-                    }
-                    else
-                    {
-                        throw new SmsException($"Error: {result.error}, {result.msg}");
-                    }
-                }
-                else
-                {
-                    throw new SmsException($"Error: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new SmsException($"An error occurred: {ex.Message}", ex);
-            }
+            return await _smsService.Response(response);
         }
 
         /// <summary>
@@ -188,50 +78,10 @@ namespace SMS_Net_BD
         /// <exception cref="SmsException"></exception>
         public async Task<string> GetBalance()
         {
-            try
-            {
-                using var client = new HttpClient();
+            var response = await _smsService.GetRequest();
 
-                string API_Url = "https://api.sms.net.bd/user/balance/";
-
-                client.BaseAddress = new Uri(API_Url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync($"?api_key={_apiKey}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    dynamic result = JsonConvert.DeserializeObject(responseContent);
-
-                    if (result.error == "0")
-                    {
-                        return responseContent;
-                    }
-                    else
-                    {
-                        throw new SmsException($"Error: {result.error}, {result.msg}");
-                    }
-                }
-                else
-                {
-                    throw new SmsException($"Error: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new SmsException($"An error occurred: {ex.Message}", ex);
-            }
+            return await _smsService.Response(response);
         }
-    }
 
-    /// <summary>
-    /// SMS Exception
-    /// </summary>
-    public class SmsException : Exception
-    {
-        public SmsException(string message) : base(message) { }
-
-        public SmsException(string message, Exception innerException) : base(message, innerException) { }
     }
 }
