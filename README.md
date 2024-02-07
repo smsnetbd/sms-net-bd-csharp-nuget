@@ -1,5 +1,5 @@
 
-# SMS.Net.Bd NuGet Package Release Note
+# sms.net.bd NuGet Package Release Note
 
 ## Version 1.1.1
 [![Static Badge](https://img.shields.io/badge/NuGet-1.1.1-blue?style=flat)
@@ -7,28 +7,28 @@
 ![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
 
 ### Summary:
-The SMS.Net.Bd NuGet package provides a simple interface to send SMS messages using the SMS.Net.Bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
+The sms.net.bd NuGet package provides a simple interface to send SMS messages using the sms.net.bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
 
 ### Initialization:
-To start using the SMS.Net.Bd NuGet package, follow these steps:
+To start using the sms.net.bd NuGet package, follow these steps:
 
-1. **Install the Package**: Install the SMS.Net.Bd NuGet package in your project using the following command in the NuGet Package Manager Console:
+1. **Install the Package**: Install the sms.net.bd NuGet package in your project using the following command in the NuGet Package Manager Console:
 
    ```shell
    dotnet add package smsnetbd.Csharp.Client --version 1.1.1
    ```
 
-2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [SMS.Net.Bd API website](https://www.sms.net.bd/api).
+2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [sms.net.bd API website](https://www.sms.net.bd/api).
 
    ```csharp
-   using SMS.Net.Bd;
+   using sms.net.bd;
 
    // Initialize SMS client with your API key
    SMS smsClient = new SMS("Your-API-Key");
    ```
 
 ### Usage:
-After initializing the SMS client, you can use its methods to interact with the SMS.Net.Bd API. Below are the available methods and their usage:
+After initializing the SMS client, you can use its methods to interact with the sms.net.bd API. Below are the available methods and their usage:
 
 1. **SendSMS**: Send a text message to a specified phone number.
 
@@ -66,9 +66,9 @@ After initializing the SMS client, you can use its methods to interact with the 
 
 ### Feedback and Support
 
-We welcome your feedback and suggestions for improving the SMS.Net.Bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
+We welcome your feedback and suggestions for improving the sms.net.bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
 
-Thank you for using SMS.Net.Bd!
+Thank you for using sms.net.bd!
 
 
-For more details on the SMS.Net.Bd API and its usage, refer to the [official API documentation](https://www.sms.net.bd/api).
+For more details on the sms.net.bd API and its usage, refer to the [official API documentation](https://www.sms.net.bd/api).
