@@ -9,8 +9,13 @@ The SMS.Net.Bd NuGet package provides a simple interface to send SMS messages us
 ### Initialization:
 To start using the SMS.Net.Bd NuGet package, follow these steps:
 
+1. **Install the Package**: Install the SMS.Net.Bd NuGet package in your project using the following command in the NuGet Package Manager Console:
 
-1. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [SMS.Net.Bd API website](https://www.sms.net.bd/api).
+   ```shell
+   dotnet add package smsnetbd.Csharp.Client --version 1.1.1
+   ```
+
+2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [SMS.Net.Bd API website](https://www.sms.net.bd/api).
 
    ```csharp
    using SMS.Net.Bd;
