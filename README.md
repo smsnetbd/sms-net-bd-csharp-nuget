@@ -1,137 +1,75 @@
-# SMS.NET.BD SMS NuGet Package Integration with Visual Studio
 
-This PHP example demonstrates how to send SMS messages using the sms.net.bd SMS API in a PHP application. The provided `sms_net_bd` class simplifies the process of interacting with the sms.net.bd SMS API.
+# Intrgrate SMS.Net.Bd SMS NuGet Package in Visual Studio
 
-## Prerequisites
+## Version 1.1.1
+[![Static Badge](https://img.shields.io/badge/NuGet-1.1.1-blue?style=flat)
+](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
+![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
 
-Before using this example, make sure you have the following prerequisites:
 
-- SMS API key. You can obtain this key by logging into your SMS account [portal](https://portal.sms.net.bd) and accessing the API page.
+### Summary:
+The SMS.Net.Bd NuGet package provides a simple interface to send SMS messages using the SMS.Net.Bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
 
-## Installation
+### Initialization:
+To start using the SMS.Net.Bd NuGet package, follow these steps:
 
-### Step 1. Clone or download this repository to your local machine.
+1. **Install the Package**: Install the SMS.Net.Bd NuGet package in your project using the following command in the NuGet Package Manager Console:
 
-```bash
-git clone https://github.com/smsnetbd/sms-net-bd-php
-```
+   ```shell
+   dotnet add package smsnetbd.Csharp.Client --version 1.1.1
+   ```
 
-### Step 2. Navigate to the project directory.
+2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [SMS.Net.Bd API website](https://www.sms.net.bd/api).
 
-```bash
-cd sms-net-bd-php
-```
+   ```csharp
+   using SMS.Net.Bd;
 
-## Usage
+   // Initialize SMS client with your API key
+   SMS smsClient = new SMS("Your-API-Key");
+   ```
 
-This example includes a basic PHP script for sending SMS messages, checking SMS status, and getting your API balance.
+### Usage:
+After initializing the SMS client, you can use its methods to interact with the SMS.Net.Bd API. Below are the available methods and their usage:
 
-### 1. Sending an SMS:
+1. **SendSMS**: Send a text message to a specified phone number.
 
-```php
-<?php
-$message = "Hello, this is a test message.";
-$recipients = "01800000000,8801700000000";
-$schedule = "2023-10-20 15:30:00"; // Optional
-$senderId = "YourSenderId"; // Optional
+   ```csharp
+   // Send SMS message
+   string phoneNumber = "1234567890";
+   string message = "Hello, world!";
+   string response = await smsClient.SendSMS(phoneNumber, message);
+   ```
 
-$sms = new sms_net_bd('your_api_key_here');
+2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
 
-// Send Single SMS
-$response = $sms->sendSMS(
-    "Hello, this is a test SMS!",
-    "01701010101"
-);
+   ```csharp
+   // Schedule SMS message
+   string phoneNumber = "1234567890";
+   string message = "Hello, world!";
+   string scheduleTime = "2023-11-01T12:00:00"; // Specify the scheduled time in ISO 8601 format
+   string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime);
+   ```
 
-// Send Multiple Recipients SMS
-$response = $sms->sendSMS(
-    "Hello, this is a test SMS!",
-    "01701010101,+8801856666666,8801349494949,01500000000"
-);
+3. **GetReport**: Retrieve the delivery report of an SMS message.
 
-// Send SMS With Sender ID or Masking Name
-$response = $sms->sendSMS(
-    "Hello, this is a test SMS!",
-    "01701010101",
-    "sms.net.bd"
-);
+   ```csharp
+   // Get SMS delivery report
+   int messageId = 12345; // Specify the ID of the SMS message
+   string report = await smsClient.GetReport(messageId);
+   ```
 
-// Schedule SMS for future delivery
-$response = $sms->sendScheduledSMS(
-    "Scheduled SMS",
-    "8801701010101",
-    $schedule // Date format: YYYY-MM-DD HH:MM:SS
-);
+4. **GetBalance**: Retrieve the current account balance.
 
-// Schedule SMS for future delivery with Sender ID
-$response = $sms->sendScheduledSMS(
-    "Scheduled SMS with date",
-    "8801701010101",
-    $schedule,
-    "sms.net.bd"
-);
+   ```csharp
+   // Get account balance
+   string balance = await smsClient.GetBalance();
+   ```
 
-print_r($response);
-?>
-```
+### Feedback and Support
 
-Replace the `$message`, `$recipients`, and `$schedule` variables with your desired values.
+We welcome your feedback and suggestions for improving the SMS.Net.Bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
 
-### 2. Checking SMS Status:
+Thank you for using SMS.Net.Bd!
 
-```php
-<?php
 
-$requestId = 12345; // Replace with the actual request ID
-$sms = new sms_net_bd('your_api_key_here');
-
-$statusResponse = $sms->getReport($requestId);
-
-print_r($statusResponse);
-```
-
-Replace `$requestId` with the actual request ID for which you want to check the status.
-
-### 3. Getting API Balance:
-
-```php
-<?php
-
-$sms = new sms_net_bd('your_api_key_here');
-
-$balanceResponse = $sms->getBalance();
-
-print_r($balanceResponse);
-```
-
-> Replace `"your_api_key_here"` with your actual SMS API key, and customize the example usage according to your specific needs.
-
-## Error Handling
-
-Ensure proper error handling in your application to handle potential issues with API requests and responses.
-
-- If `error` value in response is 0, then the request was successfull
-- If `error` value in response is other than 0, then the request was not successfull and the `message` value in response will contain the error message
-
-```php
-<?php
-$sms = new sms_net_bd('your_api_key_here');
-
-$response = $sms->sendSMS(
-    "Hello, this is a test SMS!",
-    "01701010101"
-);
-
-if ($response['error'] == 0) {
-    echo "SMS Sent Successfully";
-} else {
-    echo "Error: " . $response['message'];
-}
-?>
-```
-
-## Feedback and Contributions
-
-Feedback, bug reports, and contributions are welcome. Feel free to open issues and pull requests.
-
-For more information about sms.net.bd and its API, refer to the [SMS API Documentation](https://sms.net.bd/api).
+For more details on the SMS.Net.Bd API and its usage, refer to the [official API documentation](https://www.sms.net.bd/api).
