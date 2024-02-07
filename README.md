@@ -2,6 +2,9 @@
 # SMS.Net.Bd NuGet Package Release Note
 
 ## Version 1.1.1
+[![Static Badge](https://img.shields.io/badge/NuGet-1.1.1-blue?style=flat)
+](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
+![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
 
 ### Summary:
 The SMS.Net.Bd NuGet package provides a simple interface to send SMS messages using the SMS.Net.Bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
