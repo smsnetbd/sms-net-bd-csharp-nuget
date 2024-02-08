@@ -59,21 +59,9 @@ After initializing the SMS client, you can use its methods to interact with the 
 
     ```
     {
-      "error": 0,
-      "msg": "Success",
-      "data": {
-        "request_id": 0000,
-        "request_status": "Complete",
-        "request_charge": "0.0000",
-        "recipients": [
-          {
-            "number": "01800000000",
-            "charge": "0.0000",
-            "status": "Sent"
-          }
-        ]
-      }
-    }
+  "error": 0,
+  "msg": "Request successfully submitted"
+}
 3. **GetReport**: Retrieve the delivery report of an SMS message.
 
    ```csharp
