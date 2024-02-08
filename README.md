@@ -1,7 +1,5 @@
 
 # sms.net.bd NuGet Package Release Note
-
-## Version 1.1.1
 [![Static Badge](https://img.shields.io/badge/NuGet-1.1.1-blue?style=flat)
 ](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
 ![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
@@ -34,7 +32,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 
    ```csharp
    // Send SMS message
-   string phoneNumber = "1234567890";
+   string phoneNumber = "01800000000";
    string message = "Hello, world!";
    string sender_id = "xxxxxxx"  //Optional. If you have an approved Sender ID. 
    string response = await smsClient.SendSMS(phoneNumber, message);
@@ -52,9 +50,9 @@ After initializing the SMS client, you can use its methods to interact with the 
 
    ```csharp
    // Schedule SMS message
-   string phoneNumber = "1234567890";
+   string phoneNumber = "01800000000";
    string message = "Hello, world!";
-   string scheduleTime = "2023-11-01T12:00:00"; // Specify the scheduled time in ISO 8601 format
+   string scheduleTime = "2023-11-01 12:00:00"; // Specify the scheduled time in ISO 8601 format
    string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime);
    ```
    > Response
@@ -69,7 +67,7 @@ After initializing the SMS client, you can use its methods to interact with the 
         "request_charge": "0.0000",
         "recipients": [
           {
-            "number": "8801800000000",
+            "number": "01800000000",
             "charge": "0.0000",
             "status": "Sent"
           }
@@ -88,13 +86,13 @@ After initializing the SMS client, you can use its methods to interact with the 
 	{
 	  "error":0,
 	  "msg":"Success",
-	  "data":{"request_id":4857896,
+	  "data":{"request_id":000000,
 		 "request_status":"Complete",
-		 "request_charge":"0.3200",
+		 "request_charge":"0.0000",
 		 "recipients":[
 		  {
-			"number":"8801610699669",
-			"charge":"0.3200",
+			"number":"01800000000",
+			"charge":"0.0000",
 			"status":"Sent"
 		  }
 		]
