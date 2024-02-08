@@ -66,8 +66,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 
 ### Error Codes
 
-#### Common Errors 
- |||
+| Common Errors |  |
 |--|--|
 | Error - 0 | Success. Everything worked as expected. |
 | Error - 400 | The request was rejected, due to a missing or invalid parameter. |
@@ -77,8 +76,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 | Error - 409 | Unknown error occurred on Server end. |
 
 
-#### Send SMS Errors 
-|||
+| Send SMS Errors |  |
 |--|--|
 | Error - 410 | Account expired. |
 | Error - 411 | Reseller Account expired or suspended. |
