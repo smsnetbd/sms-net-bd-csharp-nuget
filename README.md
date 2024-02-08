@@ -58,11 +58,12 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
    > Response
 
-    ```
+    ```json
     {
       "error": 0,
       "msg": "Request successfully submitted"
     }
+    ```
 3. **GetReport**: Retrieve the delivery report of an SMS message.
 
    ```csharp
@@ -71,7 +72,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    string report = await smsClient.GetReport(messageId);
    ```
    > Response
-	```
+	```json
 	{
 	  "error":0,
 	  "msg":"Success",
@@ -95,7 +96,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    string balance = await smsClient.GetBalance();
    ```
 	> Response
-
+```json
 	    {
 	      "error": 0,
 	      "msg": "Success",
@@ -103,7 +104,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 	        "balance": "00.0000"
 	      }
 	    }
-
+```
 
 ### Error Codes:
 
