@@ -41,13 +41,13 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
    > Response
 
-    {
+    ```{
 	    "error": 0,
 	    "msg": "Request successfully submitted",
 	    "data": {
 	        "request_id": 0000
 	    }
-	}
+	}```
 
 2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
 
@@ -60,7 +60,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
    > Response
 
-    {
+    ```{
       "error": 0,
       "msg": "Success",
       "data": {
@@ -75,7 +75,7 @@ After initializing the SMS client, you can use its methods to interact with the 
           }
         ]
       }
-    }
+    }```
 
 3. **GetReport**: Retrieve the delivery report of an SMS message.
 
@@ -84,9 +84,9 @@ After initializing the SMS client, you can use its methods to interact with the 
    string messageId = 12345; // Specify the ID of the SMS message
    string report = await smsClient.GetReport(messageId);
    ```
-> Response
+   > Response
 
-    error: 0
+    ```error: 0
     msg: Success
     data: {
       "request_id": 4857896,
@@ -99,7 +99,7 @@ After initializing the SMS client, you can use its methods to interact with the 
           "status": "Sent"
         }
       ]
-    }
+    }```
 
 
 4. **GetBalance**: Retrieve the current account balance.
@@ -110,13 +110,13 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
 > Response
 
-    {
+    ```{
       "error": 0,
       "msg": "Success",
       "data": {
         "balance": "00.0000"
       }
-    }
+    }```
 
 
 ### Error Codes:
