@@ -15,7 +15,7 @@ To start using the sms.net.bd NuGet package, follow these steps:
 1. **Install the Package**: Install the sms.net.bd NuGet package in your project using the following command in the NuGet Package Manager Console:
 
    ```shell
-   dotnet add package smsnetbd.Csharp.Client
+   NuGet\Install-Package smsnetbd.Csharp.Client
    ```
 
 2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [sms.net.bd API website](https://www.sms.net.bd/api).
@@ -36,9 +36,18 @@ After initializing the SMS client, you can use its methods to interact with the 
    // Send SMS message
    string phoneNumber = "1234567890";
    string message = "Hello, world!";
+   string sender_id = "xxxxxxx"  //Optional. If you have an approved Sender ID. 
    string response = await smsClient.SendSMS(phoneNumber, message);
    ```
-
+   > Response
+    ```
+    {
+    	    "error": 0,
+    	    "msg": "Request successfully submitted",
+    	    "data": {
+    	        "request_id": 0000
+    	    }
+    }
 2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
 
    ```csharp
@@ -48,7 +57,25 @@ After initializing the SMS client, you can use its methods to interact with the 
    string scheduleTime = "2023-11-01T12:00:00"; // Specify the scheduled time in ISO 8601 format
    string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime);
    ```
+   > Response
 
+    ```
+    {
+      "error": 0,
+      "msg": "Success",
+      "data": {
+        "request_id": 0000,
+        "request_status": "Complete",
+        "request_charge": "0.0000",
+        "recipients": [
+          {
+            "number": "8801800000000",
+            "charge": "0.0000",
+            "status": "Sent"
+          }
+        ]
+      }
+    }
 3. **GetReport**: Retrieve the delivery report of an SMS message.
 
    ```csharp
@@ -56,13 +83,64 @@ After initializing the SMS client, you can use its methods to interact with the 
    string messageId = 12345; // Specify the ID of the SMS message
    string report = await smsClient.GetReport(messageId);
    ```
-
+   > Response
+	```
+	{
+	  "error":0,
+	  "msg":"Success",
+	  "data":{"request_id":4857896,
+		 "request_status":"Complete",
+		 "request_charge":"0.3200",
+		 "recipients":[
+		  {
+			"number":"8801610699669",
+			"charge":"0.3200",
+			"status":"Sent"
+		  }
+		]
+	  }
+	}
+	```
 4. **GetBalance**: Retrieve the current account balance.
 
    ```csharp
    // Get account balance
    string balance = await smsClient.GetBalance();
    ```
+	> Response
+
+	    {
+	      "error": 0,
+	      "msg": "Success",
+	      "data": {
+	        "balance": "00.0000"
+	      }
+	    }
+
+
+### Error Codes:
+
+| Common Errors |  |
+|--|--|
+| Error - 0 | Success. Everything worked as expected. |
+| Error - 400 | The request was rejected, due to a missing or invalid parameter. |
+| Error - 403 | You don't have permissions to perform the request. |
+| Error - 404 | The requested resource not found. |
+| Error - 405 | Authorization required. |
+| Error - 409 | Unknown error occurred on Server end. |
+
+
+| Send SMS Errors |  |
+|--|--|
+| Error - 410 | Account expired. |
+| Error - 411 | Reseller Account expired or suspended. |
+| Error - 412 | Invalid Schedule. |
+| Error - 413 | Invalid Sender ID. |
+| Error - 414 | Message is empty. |
+| Error - 415 | Message is too long. |
+| Error - 416 | No valid number found. |
+| Error - 417 | Insufficient balance. |
+| Error - 418 | Content Blocked. |
 
 ### Feedback and Support
 
