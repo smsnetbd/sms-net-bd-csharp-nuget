@@ -40,7 +40,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    > Response
     ```
     {
-    	    "error": 0,
+    	"error": 0,
     	    "msg": "Request successfully submitted",
     	    "data": {
     	        "request_id": 0000
