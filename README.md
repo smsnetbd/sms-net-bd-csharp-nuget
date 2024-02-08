@@ -96,7 +96,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    string balance = await smsClient.GetBalance();
    ```
 	> Response
-```json
+	```json
 	    {
 	      "error": 0,
 	      "msg": "Success",
@@ -104,7 +104,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 	        "balance": "00.0000"
 	      }
 	    }
-```
+	```
 
 ### Error Codes:
 
