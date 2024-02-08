@@ -86,7 +86,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
    > Response
 
-    error: 0
+    ```error: 0
     msg: Success
     data: {
       "request_id": 4857896,
@@ -99,7 +99,7 @@ After initializing the SMS client, you can use its methods to interact with the 
           "status": "Sent"
         }
       ]
-    }
+    }```
 
 
 4. **GetBalance**: Retrieve the current account balance.
