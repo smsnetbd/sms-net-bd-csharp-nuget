@@ -41,10 +41,10 @@ After initializing the SMS client, you can use its methods to interact with the 
     ```
     {
     	"error": 0,
-    	    "msg": "Request successfully submitted",
-    	    "data": {
-    	        "request_id": 0000
-    	    }
+    	"msg": "Request successfully submitted",
+    	"data": {
+    	    "request_id": 0000
+    	}
     }
 2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
 
