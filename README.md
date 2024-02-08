@@ -35,7 +35,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    string phoneNumber = "01800000000";
    string message = "Hello, world!";
    string sender_id = "xxxxxxx"  //Optional. If you have an approved Sender ID. 
-   string response = await smsClient.SendSMS(phoneNumber, message);
+   string response = await smsClient.SendSMS(phoneNumber, message, sender_id);
    ```
    > Response
     ```
