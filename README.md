@@ -59,9 +59,9 @@ After initializing the SMS client, you can use its methods to interact with the 
 
     ```
     {
-  "error": 0,
-  "msg": "Request successfully submitted"
-}
+      "error": 0,
+      "msg": "Request successfully submitted"
+    }
 3. **GetReport**: Retrieve the delivery report of an SMS message.
 
    ```csharp
