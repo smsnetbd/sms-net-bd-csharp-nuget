@@ -15,7 +15,7 @@ To start using the sms.net.bd NuGet package, follow these steps:
 1. **Install the Package**: Install the sms.net.bd NuGet package in your project using the following command in the NuGet Package Manager Console:
 
    ```shell
-   dotnet add package smsnetbd.Csharp.Client
+   NuGet\Install-Package smsnetbd.Csharp.Client
    ```
 
 2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [sms.net.bd API website](https://www.sms.net.bd/api).
@@ -40,15 +40,14 @@ After initializing the SMS client, you can use its methods to interact with the 
    string response = await smsClient.SendSMS(phoneNumber, message);
    ```
    > Response
-
-    ```{
-	    "error": 0,
-	    "msg": "Request successfully submitted",
-	    "data": {
-	        "request_id": 0000
-	    }
-	}
-
+    ```
+    {
+    	    "error": 0,
+    	    "msg": "Request successfully submitted",
+    	    "data": {
+    	        "request_id": 0000
+    	    }
+    }
 2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
 
    ```csharp
@@ -60,7 +59,8 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
    > Response
 
-    ```{
+    ```
+    {
       "error": 0,
       "msg": "Success",
       "data": {
@@ -76,7 +76,6 @@ After initializing the SMS client, you can use its methods to interact with the 
         ]
       }
     }
-
 3. **GetReport**: Retrieve the delivery report of an SMS message.
 
    ```csharp
@@ -85,38 +84,38 @@ After initializing the SMS client, you can use its methods to interact with the 
    string report = await smsClient.GetReport(messageId);
    ```
    > Response
-
-    ```error: 0
-    msg: Success
-    data: {
-      "request_id": 4857896,
-      "request_status": "Complete",
-      "request_charge": "0.3200",
-      "recipients": [
-        {
-          "number": "8801610699669",
-          "charge": "0.3200",
-          "status": "Sent"
-        }
-      ]
-    }```
-
-
+	```
+	{
+	  "error":0,
+	  "msg":"Success",
+	  "data":{"request_id":4857896,
+		 "request_status":"Complete",
+		 "request_charge":"0.3200",
+		 "recipients":[
+		  {
+			"number":"8801610699669",
+			"charge":"0.3200",
+			"status":"Sent"
+		  }
+		]
+	  }
+	}
+	```
 4. **GetBalance**: Retrieve the current account balance.
 
    ```csharp
    // Get account balance
    string balance = await smsClient.GetBalance();
    ```
-> Response
+	> Response
 
-    {
-      "error": 0,
-      "msg": "Success",
-      "data": {
-        "balance": "00.0000"
-      }
-    }
+	    {
+	      "error": 0,
+	      "msg": "Success",
+	      "data": {
+	        "balance": "00.0000"
+	      }
+	    }
 
 
 ### Error Codes:
