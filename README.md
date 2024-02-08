@@ -64,6 +64,32 @@ After initializing the SMS client, you can use its methods to interact with the 
    string balance = await smsClient.GetBalance();
    ```
 
+### Error Codes
+
+#### Common Errors 
+ |||
+|--|--|
+| Error - 0 | Success. Everything worked as expected. |
+| Error - 400 | The request was rejected, due to a missing or invalid parameter. |
+| Error - 403 | You don't have permissions to perform the request. |
+| Error - 404 | The requested resource not found. |
+| Error - 405 | Authorization required. |
+| Error - 409 | Unknown error occurred on Server end. |
+
+
+#### Send SMS Errors 
+|||
+|--|--|
+| Error - 410 | Account expired. |
+| Error - 411 | Reseller Account expired or suspended. |
+| Error - 412 | Invalid Schedule. |
+| Error - 413 | Invalid Sender ID. |
+| Error - 414 | Message is empty. |
+| Error - 415 | Message is too long. |
+| Error - 416 | No valid number found. |
+| Error - 417 | Insufficient balance. |
+| Error - 418 | Content Blocked. |
+
 ### Feedback and Support
 
 We welcome your feedback and suggestions for improving the sms.net.bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
