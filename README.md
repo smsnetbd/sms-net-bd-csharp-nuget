@@ -64,7 +64,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    string balance = await smsClient.GetBalance();
    ```
 
-### Error Codes
+### Error Codes:
 
 | Common Errors |  |
 |--|--|
