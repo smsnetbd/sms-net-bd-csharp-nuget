@@ -34,7 +34,7 @@ After initializing the SMS client, you can use its methods to interact with the 
    // Send SMS message
    string phoneNumber = "01800000000";
    string message = "Hello, world!";
-   string sender_id = "xxxxxxx"  //Optional. If you have an approved Sender ID. 
+   string sender_id = "xxxxxxx";  //Optional. If you have an approved Sender ID. 
    string response = await smsClient.SendSMS(phoneNumber, message, sender_id);
    ```
    > Response
@@ -68,7 +68,7 @@ After initializing the SMS client, you can use its methods to interact with the 
 
    ```csharp
    // Get SMS delivery report
-   string messageId = 12345; // Specify the ID of the SMS message
+   int messageId = 12345; // Specify the ID of the SMS message
    string report = await smsClient.GetReport(messageId);
    ```
    > Response
