@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>10.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <PackageId>smsnetbd.Csharp.Client</PackageId>
     <Title>sms.net.bd: SMS Sender API Service</Title>
-    <Version>1.1.1</Version>
+    <Version>2.0.0</Version>
     <Authors>SmsNetBd.Developer_Team</Authors>
     <Company>smsnetbd</Company>
     <Description>SMS Tool using SMS API by sms.net.bd</Description>
@@ -18,78 +19,133 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIcon>logo_icon.png</PackageIcon>
     <PackageReleaseNotes>
-# SMS.Net.Bd NuGet Package Release Note
 
-## Version 1.1.1
+		# SMS.Net.Bd NuGet Package Release Note
 
-### Summary:
-The SMS.Net.Bd NuGet package provides a simple interface to send SMS messages using the SMS.Net.Bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
-
-### Initialization:
-To start using the SMS.Net.Bd NuGet package, follow these steps:
+		## New Update smsnetbd.Csharp.Client v2.0.0
 
 
-1. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [SMS.Net.Bd API website](https://www.sms.net.bd/api).
+		We are excited to announce the release of version 2.0.0 of the `smsnetbd.Csharp.Client` NuGet package! This update introduces several significant enhancements and new features to streamline your SMS campaign management and broaden platform support.
 
-   ```csharp
-   using SMS.Net.Bd;
+		## New Features
 
-   // Initialize SMS client with your API key
-   SMS smsClient = new SMS("Your-API-Key");
-   ```
+		### 1. Supports a wide range of .NET platform compatibility
+		To ensure compatibility across all .NET platforms, we've added support for .NET Standard 2.0. This enhancement allows developers to integrate the `SMSNetBD.CSharp.Client` package into a wide range of .NET applications, including those targeting .NET Framework, .NET Core, Xamarin, and more.
 
-### Usage:
-After initializing the SMS client, you can use its methods to interact with the SMS.Net.Bd API. Below are the available methods and their usage:
+		### 2. Get All Approved Campaign Content List
+		We have introduced a new method that allows you to retrieve a list of all approved campaign content available in your account. This feature enables you to easily manage and review the content before initiating any SMS campaigns.
 
-1. **SendSMS**: Send a text message to a specified phone number.
+		### 3. Send SMS Campaign Content via sms.net.bd API
+		The latest update also includes a method to send SMS campaign content directly through the sms.net.bd API. This method leverages the campaign content ID to ensure accurate and targeted messaging to your audience.
 
-   ```csharp
-   // Send SMS message
-   string phoneNumber = "1234567890";
-   string message = "Hello, world!";
-   string response = await smsClient.SendSMS(phoneNumber, message);
-   ```
+		## How to Use the New Features
 
-2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
+		### 1. Initializing the SMS Service
 
-   ```csharp
-   // Schedule SMS message
-   string phoneNumber = "1234567890";
-   string message = "Hello, world!";
-   string scheduleTime = "2023-11-01T12:00:00"; // Specify the scheduled time in ISO 8601 format
-   string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime);
-   ```
+		To begin, initialize the `SMS` service with your API key:
 
-3. **GetReport**: Retrieve the delivery report of an SMS message.
+		```csharp
+		// Initialize SMS client with your API key
+		SMS smsClient = new SMS("your-api-key");
+		```
 
-   ```csharp
-   // Get SMS delivery report
-   int messageId = 12345; // Specify the ID of the SMS message
-   string report = await smsClient.GetReport(messageId);
-   ```
+		### 2. Get All Approved Campaign Content List
 
-4. **GetBalance**: Retrieve the current account balance.
+		You can now retrieve the list of all approved campaign content by calling the `GetCampaigns` method. This method sends a GET request to the API and returns a list of campaign content in JSON format.
 
-   ```csharp
-   // Get account balance
-   string balance = await smsClient.GetBalance();
-   ```
+		```csharp
+		string campaigns = await smsClient.GetCampaigns();
+		Console.WriteLine(campaigns);
+		```
 
-### Feedback and Support
+		### 3. Send SMS Campaign Content
 
-We welcome your feedback and suggestions for improving the SMS.Net.Bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
+		To send an SMS campaign using one of the approved contents, use the `CampaignSMS` method. This method finds the campaign content by its ID and sends the corresponding SMS to the specified phone number.
 
-Thank you for using SMS.Net.Bd!
+		```csharp
+		string phoneNumber = "01XXXXXXXXX";
+		string contentId = "XXXXX"; // ID of the approved campaign content
+
+		string response = await smsClient.CampaignSMS(phoneNumber, contentId);
+		Console.WriteLine(response);
+		```
 
 
-For more details on the SMS.Net.Bd API and its usage, refer to the [official API documentation](https://www.sms.net.bd/api).
-</PackageReleaseNotes>
+		We appreciate your continued [support and feedback](https://github.com/smsnetbd/sms-net-bd-csharp-nuget). If you have any questions or encounter any issues, please do not hesitate to contact our support team.
+
+		## Version 1.1.0
+
+		### Summary:
+		The SMS.Net.Bd NuGet package provides a simple interface to send SMS messages using the SMS.Net.Bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balance.
+
+		### Initialization:
+		To start using the SMS.Net.Bd NuGet package, follow these steps:
+
+
+		1. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [SMS.Net.Bd API website](https://www.sms.net.bd/api).
+
+		```csharp
+		using SMS.Net.Bd;
+
+		// Initialize SMS client with your API key
+		SMS smsClient = new SMS("Your-API-Key");
+		```
+
+		### Usage:
+		After initializing the SMS client, you can use its methods to interact with the SMS.Net.Bd API. Below are the available methods and their usage:
+
+		1. **SendSMS**: Send a text message to a specified phone number.
+
+		```csharp
+		// Send SMS message
+		string phoneNumber = "1234567890";
+		string message = "Hello, world!";
+		string response = await smsClient.SendSMS(phoneNumber, message);
+		```
+
+		2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
+
+		```csharp
+		// Schedule SMS message
+		string phoneNumber = "1234567890";
+		string message = "Hello, world!";
+		string scheduleTime = "2023-11-01T12:00:00"; // Specify the scheduled time in ISO 8601 format
+		string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime);
+		```
+
+		3. **GetReport**: Retrieve the delivery report of an SMS message.
+
+		```csharp
+		// Get SMS delivery report
+		int messageId = 12345; // Specify the ID of the SMS message
+		string report = await smsClient.GetReport(messageId);
+		```
+
+		4. **GetBalance**: Retrieve the current account balance.
+
+		```csharp
+		// Get account balance
+		string balance = await smsClient.GetBalance();
+		```
+
+		### Feedback and Support
+
+		We welcome your feedback and suggestions for improving the SMS.Net.Bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
+
+		Thank you for using SMS.Net.Bd!
+
+
+		For more details on the SMS.Net.Bd API and its usage, refer to the [official API documentation](https://www.sms.net.bd/api).
+	</PackageReleaseNotes>
     <PackageProjectUrl>https://www.sms.net.bd/api</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+	<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	<PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>

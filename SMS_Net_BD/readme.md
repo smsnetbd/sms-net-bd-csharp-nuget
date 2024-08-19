@@ -1,8 +1,63 @@
 
 # sms.net.bd NuGet Package Release Note
 
-## Version 1.1.1
-[![Static Badge](https://img.shields.io/badge/NuGet-1.1.1-blue?style=flat)
+[![Static Badge](https://img.shields.io/badge/NuGet-2.0-blue?style=flat)
+](https://www.nuget.org/packages/smsnetbd.Csharp.Client)![Static Badge](https://img.shields.io/badge/.Net_Core-2.0-purple?style=flat)
+![Static Badge](https://img.shields.io/badge/.Net_Framework-4.6.1-orange?style=flat)
+![Static Badge](https://img.shields.io/badge/Xamarin.iOS-10.14-lightgrey?style=flat)
+![Static Badge](https://img.shields.io/badge/Xamarin.Android-8.0-success?style=flat)
+## New Update smsnetbd.Csharp.Client v2.0.0
+
+We are excited to announce the release of version 2.0.0 of the `smsnetbd.Csharp.Client` NuGet package! This update introduces several significant enhancements and new features to streamline your SMS campaign management and broaden platform support.
+
+## New Features
+
+### 1. Supports a wide range of .NET platform compatibility
+To ensure compatibility across all .NET platforms, we've added support for .NET Standard 2.0. This enhancement allows developers to integrate the `SMSNetBD.CSharp.Client` package into a wide range of .NET applications, including those targeting .NET Framework, .NET Core, Xamarin, and more.
+
+### 2. Get All Approved Campaign Content List
+We have introduced a new method that allows you to retrieve a list of all approved campaign content available in your account. This feature enables you to easily manage and review the content before initiating any SMS campaigns.
+
+### 3. Send SMS Campaign Content via sms.net.bd API
+The latest update also includes a method to send SMS campaign content directly through the sms.net.bd API. This method leverages the campaign content ID to ensure accurate and targeted messaging to your audience.
+
+## How to Use the New Features
+
+### 1. Initializing the SMS Service
+
+To begin, initialize the `SMS` service with your API key:
+
+```csharp
+	// Initialize SMS client with your API key
+	SMS smsClient = new SMS("your-api-key");
+```
+
+### 2. Get All Approved Campaign Content List
+
+You can now retrieve the list of all approved campaign content by calling the `GetCampaigns` method. This method sends a GET request to the API and returns a list of campaign content in JSON format.
+
+```csharp
+string campaigns = await smsClient.GetCampaigns();
+Console.WriteLine(campaigns);
+```
+
+### 3. Send SMS Campaign Content
+
+To send an SMS campaign using one of the approved contents, use the `CampaignSMS` method. This method finds the campaign content by its ID and sends the corresponding SMS to the specified phone number.
+
+```csharp
+string phoneNumber = "01XXXXXXXXX";
+string contentId = "XXXXX"; // ID of the approved campaign content
+
+string response = await smsClient.CampaignSMS(phoneNumber, contentId);
+Console.WriteLine(response);
+```
+
+
+We appreciate your continued [support and feedback](https://github.com/smsnetbd/sms-net-bd-csharp-nuget). If you have any questions or encounter any issues, please do not hesitate to contact our support team.
+
+## Version 1.0.0
+[![Static Badge](https://img.shields.io/badge/NuGet-1.0.0-blue?style=flat)
 ](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
 ![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
 

@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+using SMS_Net_BD.DTOJson;
+using SMS_Net_BD.Exceptions;
+using SMS_Net_BD.Services;
 
 namespace SMS_Net_BD
 {
@@ -22,10 +19,41 @@ namespace SMS_Net_BD
             _smsService = new SmsService(apiKey);
         }
 
-        //HttpClient client = new HttpClient();
+        /// <summary>
+        /// Check your Current Balance using sms.net.bd API
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="SmsException"></exception>
+        public async Task<string> GetBalance()
+        {
+            var response = await _smsService.GetRequest(Enum.RequestTypeEnum.Balance);
 
-        //private SmsService smsService = new SmsService(apiKey);
+            return await _smsService.Response(response);
+        }
 
+        /// <summary>
+        /// Get SMS Report by Id using sms.net.bd API
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="SmsException"></exception>
+        public async Task<string> GetReport(int id)
+        {
+            var response = await _smsService.GetRequest(Enum.RequestTypeEnum.Report);
+
+            return await _smsService.Response(response);
+        }
+
+        /// <summary>
+        /// Get All Approved Campaign Content List
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> GetCampaigns()
+        {
+            var response = await _smsService.GetRequest(Enum.RequestTypeEnum.Campaign);
+
+            return await _smsService.Response(response);
+        }
 
         /// <summary>
         /// Send SMS with Sender Id using sms.net.bd API
@@ -52,36 +80,30 @@ namespace SMS_Net_BD
         /// <exception cref="SmsException"></exception>
         public async Task<string> ScheduleSMS(string to_Phone_Number, string text_Massage, string scheduleTime)
         {
-            var response = await _smsService.PostRequest(to_Phone_Number, text_Massage, "", scheduleTime);
-
-            return await _smsService.Response(response);
-        }
-
-
-        /// <summary>
-        /// Get SMS Report by Id using sms.net.bd API
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// <exception cref="SmsException"></exception>
-        public async Task<string> GetReport(int id)
-        {
-            var response = await _smsService.GetRequest(id);
+            var response = await _smsService.PostRequest(to_Phone_Number, text_Massage, string.Empty, scheduleTime);
 
             return await _smsService.Response(response);
         }
 
         /// <summary>
-        /// Check your Current Balance using sms.net.bd API
+        /// Send Campaign SMS using sms.net.bd API
         /// </summary>
+        /// <param name="to_Phone_Number"></param>
+        /// <param name="content_id"></param>
+        /// <param name="scheduleTime"></param>
         /// <returns></returns>
-        /// <exception cref="SmsException"></exception>
-        public async Task<string> GetBalance()
+        public async Task<string> CampaignSMS(string to_Phone_Number, string content_id)
         {
-            var response = await _smsService.GetRequest();
+            HttpResponseMessage response = new HttpResponseMessage();
+            var getCampaign = await _smsService.GetRequest(Enum.RequestTypeEnum.Campaign);
+            var containString = await getCampaign.Content.ReadAsStringAsync();
+
+            JsonRoot resultList = JsonConvert.DeserializeObject<JsonRoot>(containString);
+            var matchedItem = resultList.Data.Items.FirstOrDefault(x => x.Id == int.Parse(content_id));
+            if (matchedItem != null)
+                response = await _smsService.PostRequest(to_Phone_Number, matchedItem.Text, string.Empty, string.Empty, content_id);
 
             return await _smsService.Response(response);
         }
-
     }
 }

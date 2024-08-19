@@ -1,26 +1,23 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using SMS_Net_BD.Enum;
+using SMS_Net_BD.Exceptions;
 
-namespace SMS_Net_BD
+namespace SMS_Net_BD.Services
 {
     internal class SmsService
     {
         private string _apiKey = string.Empty;
-
-        HttpClient client = new HttpClient();
 
         public SmsService(string apiKey)
         {
             _apiKey = apiKey;
         }
 
-        internal async Task<HttpResponseMessage> PostRequest(string to_Phone_Number, string text_Massage, string sender_Id = "", string scheduleTime = "")
+        internal async Task<HttpResponseMessage> PostRequest(string to_Phone_Number, string text_Massage, string sender_Id = "", string scheduleTime = "", string content_Id = "")
         {
+            HttpClient client = new HttpClient();
             string API_Url = "https://api.sms.net.bd/sendsms";
 
             client.BaseAddress = new Uri(API_Url);
@@ -33,7 +30,8 @@ namespace SMS_Net_BD
                 msg = text_Massage,
                 to = to_Phone_Number,
                 schedule = scheduleTime,
-                sender = sender_Id
+                sender_id = sender_Id,
+                content_id = content_Id
             };
 
             var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
@@ -43,10 +41,23 @@ namespace SMS_Net_BD
             return response;
         }
 
-        internal async Task<HttpResponseMessage> GetRequest(int Id = 0)
+        internal async Task<HttpResponseMessage> GetRequest(RequestTypeEnum type, int Id = 0)
         {
+            HttpClient client = new HttpClient();
+            string API_Url = string.Empty;
 
-            string API_Url = Id > 0 ? $"https://api.sms.net.bd/report/request/{Id}/" : "https://api.sms.net.bd/user/balance/";
+            switch (type)
+            {
+                case RequestTypeEnum.Balance:
+                    API_Url = "https://api.sms.net.bd/user/balance/";
+                    break;
+                case RequestTypeEnum.Report:
+                    API_Url = $"https://api.sms.net.bd/report/request/{Id}/";
+                    break;
+                case RequestTypeEnum.Campaign:
+                    API_Url = "https://api.sms.net.bd/config/Campaigncontent";
+                    break;
+            }
 
             client.BaseAddress = new Uri(API_Url);
 
@@ -74,15 +85,4 @@ namespace SMS_Net_BD
                 throw new SmsException($"Error: {response.StatusCode}");
         }
     }
-
-    /// <summary>
-    /// SMS Exception
-    /// </summary>
-    public class SmsException : Exception
-    {
-        public SmsException(string message) : base(message) { }
-
-        public SmsException(string message, Exception innerException) : base(message, innerException) { }
-    }
-
 }
