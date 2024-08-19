@@ -1,13 +1,13 @@
 
 # sms.net.bd NuGet Package Release Note
-[![Static Badge](https://img.shields.io/badge/NuGet-1.1.1-blue?style=flat)
+[![Static Badge](https://img.shields.io/badge/NuGet-2.0.0-blue?style=flat)
 ](https://www.nuget.org/packages/smsnetbd.Csharp.Client)![Static Badge](https://img.shields.io/badge/.Net_Core-2.0-purple?style=flat)
 ![Static Badge](https://img.shields.io/badge/.Net_Framework-4.6.1-critical?style=flat)
 ![Static Badge](https://img.shields.io/badge/Xamarin.iOS-10.14-lightgrey?style=flat)
 ![Static Badge](https://img.shields.io/badge/Xamarin.Android-8.0-success?style=flat)
-## New Update smsnetbd.Csharp.Client v1.1.1
+## New Update smsnetbd.Csharp.Client v2.0.0
 
-We are excited to announce the release of version 1.1.1 of the `smsnetbd.Csharp.Client` NuGet package! This update introduces several significant enhancements and new features to streamline your SMS campaign management and broaden platform support.
+We are excited to announce the release of version 2.0.0 of the `smsnetbd.Csharp.Client` NuGet package! This update introduces several significant enhancements and new features to streamline your SMS campaign management and broaden platform support.
 
 ## New Features
 
