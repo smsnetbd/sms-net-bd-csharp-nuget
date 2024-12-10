@@ -27,8 +27,8 @@ The latest update also includes a method to send SMS campaign content directly t
 To begin, initialize the `SMS` service with your API key:
 
 ```csharp
-	// Initialize SMS client with your API key
-	SMS smsClient = new SMS("your-api-key");
+// Initialize SMS client with your API key
+SMS smsClient = new SMS("your-api-key");
 ```
 
 ### 2. Get All Approved Campaign Content List
@@ -155,13 +155,13 @@ After initializing the SMS client, you can use its methods to interact with the 
    ```
 	> Response
 	```json
-	    {
-	      "error": 0,
-	      "msg": "Success",
-	      "data": {
-	        "balance": "00.0000"
-	      }
-	    }
+    {
+      "error": 0,
+      "msg": "Success",
+      "data": {
+ 		"balance": "00.0000"
+      }
+    }
 	```
 
 ### Error Codes:
