@@ -112,7 +112,8 @@ After initializing the SMS client, you can use its methods to interact with the 
    string phoneNumber = "01800000000";
    string message = "Hello, world!";
    string scheduleTime = "2023-11-01 12:00:00"; // Specify the scheduled time in ISO 8601 format
-   string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime);
+   string sender_id = "xxxxxxx";  //Optional. If you have an approved Sender ID.
+   string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime, sender_id);
    ```
    > Response
 

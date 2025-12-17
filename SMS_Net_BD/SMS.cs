@@ -76,11 +76,12 @@ namespace SMS_Net_BD
         /// <param name="to_Phone_Number"></param>
         /// <param name="text_Massage"></param>
         /// <param name="scheduleTime"></param>
+        /// <param name="sender_Id"></param>
         /// <returns></returns>
         /// <exception cref="SmsException"></exception>
-        public async Task<string> ScheduleSMS(string to_Phone_Number, string text_Massage, string scheduleTime)
+        public async Task<string> ScheduleSMS(string to_Phone_Number, string text_Massage, string scheduleTime, string sender_Id = "")
         {
-            var response = await _smsService.PostRequest(to_Phone_Number, text_Massage, string.Empty, scheduleTime);
+            var response = await _smsService.PostRequest(to_Phone_Number, text_Massage, sender_Id, scheduleTime);
 
             return await _smsService.Response(response);
         }
