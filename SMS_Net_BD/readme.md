@@ -1,208 +1,194 @@
+# sms.net.bd NuGet Package Documentation
 
-# sms.net.bd NuGet Package Release Note
+[![NuGet Version](https://img.shields.io/badge/NuGet-2.0.0-blue?style=flat)](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
+![.NET Standard](https://img.shields.io/badge/.NET_Standard-2.0-purple?style=flat)
+![.NET Framework](https://img.shields.io/badge/.NET_Framework-4.6.1+-critical?style=flat)
+![Xamarin.iOS](https://img.shields.io/badge/Xamarin.iOS-10.14+-lightgrey?style=flat)
+![Xamarin.Android](https://img.shields.io/badge/Xamarin.Android-8.0+-success?style=flat)
 
-[![Static Badge](https://img.shields.io/badge/NuGet-2.0-blue?style=flat)
-](https://www.nuget.org/packages/smsnetbd.Csharp.Client)![Static Badge](https://img.shields.io/badge/.Net_Core-2.0-purple?style=flat)
-![Static Badge](https://img.shields.io/badge/.Net_Framework-4.6.1-orange?style=flat)
-![Static Badge](https://img.shields.io/badge/Xamarin.iOS-10.14-lightgrey?style=flat)
-![Static Badge](https://img.shields.io/badge/Xamarin.Android-8.0-success?style=flat)
-## New Update smsnetbd.Csharp.Client v2.0.0
+## Overview
 
-We are excited to announce the release of version 2.0.0 of the `smsnetbd.Csharp.Client` NuGet package! This update introduces several significant enhancements and new features to streamline your SMS campaign management and broaden platform support.
+The `smsnetbd.Csharp.Client` package provides a simple and powerful interface to interact with the sms.net.bd API for sending SMS messages, managing campaigns, and monitoring account status.
 
-## New Features
+## Installation
 
-### 1. Supports a wide range of .NET platform compatibility
-To ensure compatibility across all .NET platforms, we've added support for .NET Standard 2.0. This enhancement allows developers to integrate the `SMSNetBD.CSharp.Client` package into a wide range of .NET applications, including those targeting .NET Framework, .NET Core, Xamarin, and more.
-
-### 2. Get All Approved Campaign Content List
-We have introduced a new method that allows you to retrieve a list of all approved campaign content available in your account. This feature enables you to easily manage and review the content before initiating any SMS campaigns.
-
-### 3. Send SMS Campaign Content via sms.net.bd API
-The latest update also includes a method to send SMS campaign content directly through the sms.net.bd API. This method leverages the campaign content ID to ensure accurate and targeted messaging to your audience.
-
-## How to Use the New Features
-
-### 1. Initializing the SMS Service
-
-To begin, initialize the `SMS` service with your API key:
-
-```csharp
-	// Initialize SMS client with your API key
-	SMS smsClient = new SMS("your-api-key");
+Install the package via NuGet Package Manager Console:
+```shell
+NuGet\Install-Package smsnetbd.Csharp.Client
 ```
 
-### 2. Get All Approved Campaign Content List
+## Getting Started
 
-You can now retrieve the list of all approved campaign content by calling the `GetCampaigns` method. This method sends a GET request to the API and returns a list of campaign content in JSON format.
+### Initialize the SMS Client
 
+Obtain your API key from [sms.net.bd API portal](https://www.sms.net.bd/api) and initialize the client:
+```csharp
+using sms.net.bd;
+
+// Initialize SMS client with your API key
+SMS smsClient = new SMS("your-api-key");
+```
+
+## Features & Usage
+
+### 1. Send SMS
+
+Send a text message to a specified phone number.
+```csharp
+string phoneNumber = "01800000000";
+string message = "Hello, world!";
+// string senderId = "xxxxxxx";  // Optional: Use if you have an approved Sender ID
+
+string response = await smsClient.SendSMS(phoneNumber, message, senderId);
+```
+
+**Response:**
+```json
+{
+  "error": 0,
+  "msg": "Request successfully submitted",
+  "data": {
+    "request_id": 12345
+  }
+}
+```
+
+### 2. Schedule SMS
+
+Schedule a text message to be sent at a specified future time.
+```csharp
+string phoneNumber = "01800000000";
+string message = "Hello, world!";
+string scheduleTime = "2023-11-01 12:00:00"; // Format: YYYY-MM-DD HH:MM:SS
+// string senderId = "xxxxxxx";  // Optional: Use if you have an approved Sender ID
+
+string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime, senderId);
+```
+
+**Response:**
+```json
+{
+  "error": 0,
+  "msg": "Request successfully submitted"
+}
+```
+
+### 3. Get SMS Delivery Report
+
+Retrieve the delivery status of a sent SMS message.
+```csharp
+int requestId = 12345; // Request ID from SendSMS response
+
+string report = await smsClient.GetReport(requestId);
+```
+
+**Response:**
+```json
+{
+  "error": 0,
+  "msg": "Success",
+  "data": {
+    "request_id": 12345,
+    "request_status": "Complete",
+    "request_charge": "0.2500",
+    "recipients": [
+      {
+        "number": "01800000000",
+        "charge": "0.2500",
+        "status": "Sent"
+      }
+    ]
+  }
+}
+```
+
+### 4. Get Account Balance
+
+Check your current SMS account balance.
+```csharp
+string balance = await smsClient.GetBalance();
+```
+
+**Response:**
+```json
+{
+  "error": 0,
+  "msg": "Success",
+  "data": {
+    "balance": "150.5000"
+  }
+}
+```
+
+### 5. Get All Approved Campaign Content (New in v2.0.0)
+
+Retrieve a list of all approved campaign content from your account.
 ```csharp
 string campaigns = await smsClient.GetCampaigns();
 Console.WriteLine(campaigns);
 ```
 
-### 3. Send SMS Campaign Content
+### 6. Send Campaign SMS (New in v2.0.0)
 
-To send an SMS campaign using one of the approved contents, use the `CampaignSMS` method. This method finds the campaign content by its ID and sends the corresponding SMS to the specified phone number.
-
+Send an SMS using pre-approved campaign content by content ID.
 ```csharp
-string phoneNumber = "01XXXXXXXXX";
-string contentId = "XXXXX"; // ID of the approved campaign content
+string phoneNumber = "01800000000";
+string contentId = "XXXXX"; // ID of approved campaign content
 
 string response = await smsClient.CampaignSMS(phoneNumber, contentId);
 Console.WriteLine(response);
 ```
 
+## Error Codes Reference
 
-We appreciate your continued [support and feedback](https://github.com/smsnetbd/sms-net-bd-csharp-nuget). If you have any questions or encounter any issues, please do not hesitate to contact our support team.
+### Common Errors
 
-## Version 1.0.0
-[![Static Badge](https://img.shields.io/badge/NuGet-1.0.0-blue?style=flat)
-](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
-![Static Badge](https://img.shields.io/badge/.Net_Core-6.0-purple?style=flat)
+| Error Code | Description |
+|------------|-------------|
+| 0 | Success - Everything worked as expected |
+| 400 | Bad Request - Missing or invalid parameter |
+| 403 | Forbidden - Insufficient permissions |
+| 404 | Not Found - Requested resource doesn't exist |
+| 405 | Unauthorized - Authorization required |
+| 409 | Server Error - Unknown error on server |
 
-### Summary:
-The sms.net.bd NuGet package provides a simple interface to send SMS messages using the sms.net.bd API. This release introduces initial support for sending SMS messages, scheduling SMS messages, checking SMS delivery reports, and retrieving account balances.
+### SMS-Specific Errors
 
-### Initialization:
-To start using the sms.net.bd NuGet package, follow these steps:
+| Error Code | Description |
+|------------|-------------|
+| 410 | Account expired |
+| 411 | Reseller account expired or suspended |
+| 412 | Invalid schedule time format |
+| 413 | Invalid or unapproved Sender ID |
+| 414 | Message content is empty |
+| 415 | Message exceeds maximum length |
+| 416 | No valid recipient number found |
+| 417 | Insufficient account balance |
+| 418 | Content blocked by filter |
 
-1. **Install the Package**: Install the sms.net.bd NuGet package in your project using the following command in the NuGet Package Manager Console:
+## Platform Compatibility
 
-   ```shell
-   NuGet\Install-Package smsnetbd.Csharp.Client
-   ```
+The package supports .NET Standard 2.0, ensuring compatibility with:
 
-2. **Initialize SMS Client**: Create an instance of the `SMS` class by providing your API key. This API key can be obtained from the [sms.net.bd API website](https://www.sms.net.bd/api).
+- .NET Framework 4.6.1+
+- .NET Core 2.0+
+- .NET 5, 6, 7, 8+
+- Xamarin.iOS 10.14+
+- Xamarin.Android 8.0+
+- Mono, UWP, and more
 
-   ```csharp
-   using sms.net.bd;
+## Resources
 
-   // Initialize SMS client with your API key
-   SMS smsClient = new SMS("Your-API-Key");
-   ```
+- **API Documentation**: [https://www.sms.net.bd/api](https://www.sms.net.bd/api)
+- **NuGet Package**: [https://www.nuget.org/packages/smsnetbd.Csharp.Client](https://www.nuget.org/packages/smsnetbd.Csharp.Client)
+- **GitHub Repository**: [https://github.com/smsnetbd/sms-net-bd-csharp-nuget](https://github.com/smsnetbd/sms-net-bd-csharp-nuget)
 
-### Usage:
-After initializing the SMS client, you can use its methods to interact with the sms.net.bd API. Below are the available methods and their usage:
+## Support & Feedback
 
-1. **SendSMS**: Send a text message to a specified phone number.
+We value your feedback! If you encounter any issues or have suggestions:
 
-   ```csharp
-   // Send SMS message
-   string phoneNumber = "1234567890";
-   string message = "Hello, world!";
-   string sender_id = "xxxxxxx"  //Optional. If you have an approved Sender ID. 
-   string response = await smsClient.SendSMS(phoneNumber, message);
-   ```
-   > Response
-    ```
-    {
-    	"error": 0,
-    	    "msg": "Request successfully submitted",
-    	    "data": {
-    	        "request_id": 0000
-    	    }
-    }
-2. **ScheduleSMS**: Schedule a text message to be sent at a specified time.
+- Contact our support team
+- [Open an issue on GitHub](https://github.com/smsnetbd/sms-net-bd-csharp-nuget/issues)
+- Star us on GitHub if you find this package helpful!
 
-   ```csharp
-   // Schedule SMS message
-   string phoneNumber = "1234567890";
-   string message = "Hello, world!";
-   string scheduleTime = "2023-11-01T12:00:00"; // Specify the scheduled time in ISO 8601 format
-   string sender_id = "xxxxxxx";  //Optional. If you have an approved Sender ID.
-   string response = await smsClient.ScheduleSMS(phoneNumber, message, scheduleTime, sender_id);
-   ```
-   > Response
-
-    ```
-    {
-      "error": 0,
-      "msg": "Success",
-      "data": {
-        "request_id": 0000,
-        "request_status": "Complete",
-        "request_charge": "0.0000",
-        "recipients": [
-          {
-            "number": "8801800000000",
-            "charge": "0.0000",
-            "status": "Sent"
-          }
-        ]
-      }
-    }
-3. **GetReport**: Retrieve the delivery report of an SMS message.
-
-   ```csharp
-   // Get SMS delivery report
-   string messageId = 12345; // Specify the ID of the SMS message
-   string report = await smsClient.GetReport(messageId);
-   ```
-   > Response
-	```
-	{
-	  "error":0,
-	  "msg":"Success",
-	  "data":{"request_id":4857896,
-		 "request_status":"Complete",
-		 "request_charge":"0.3200",
-		 "recipients":[
-		  {
-			"number":"8801610699669",
-			"charge":"0.3200",
-			"status":"Sent"
-		  }
-		]
-	  }
-	}
-	```
-4. **GetBalance**: Retrieve the current account balance.
-
-   ```csharp
-   // Get account balance
-   string balance = await smsClient.GetBalance();
-   ```
-	> Response
-
-	    {
-	      "error": 0,
-	      "msg": "Success",
-	      "data": {
-	        "balance": "00.0000"
-	      }
-	    }
-
-
-### Error Codes:
-
-| Common Errors |  |
-|--|--|
-| Error - 0 | Success. Everything worked as expected. |
-| Error - 400 | The request was rejected, due to a missing or invalid parameter. |
-| Error - 403 | You don't have permissions to perform the request. |
-| Error - 404 | The requested resource not found. |
-| Error - 405 | Authorization required. |
-| Error - 409 | Unknown error occurred on Server end. |
-
-
-| Send SMS Errors |  |
-|--|--|
-| Error - 410 | Account expired. |
-| Error - 411 | Reseller Account expired or suspended. |
-| Error - 412 | Invalid Schedule. |
-| Error - 413 | Invalid Sender ID. |
-| Error - 414 | Message is empty. |
-| Error - 415 | Message is too long. |
-| Error - 416 | No valid number found. |
-| Error - 417 | Insufficient balance. |
-| Error - 418 | Content Blocked. |
-
-### Feedback and Support
-
-We welcome your feedback and suggestions for improving the sms.net.bd NuGet package. If you encounter any issues or have questions, please contact [Your Contact Information] or open an issue on the GitHub repository.
-
-Thank you for using sms.net.bd!
-
-
-For more details on the sms.net.bd API and its usage, refer to the [official API documentation](https://www.sms.net.bd/api).
+**Thank you for using sms.net.bd!**
